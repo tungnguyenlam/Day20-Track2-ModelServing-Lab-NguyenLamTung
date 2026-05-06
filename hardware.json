@@ -1,0 +1,39 @@
+{
+  "cpu": {
+    "arch": "x86_64",
+    "cores_logical": 16,
+    "model": "AMD Ryzen 7 H 255 w/ Radeon 780M Graphics",
+    "avx2": true,
+    "avx512": true,
+    "neon": false,
+    "cores_physical": 16
+  },
+  "ram_gb": 15.6,
+  "gpu": {
+    "backends": {
+      "nvidia_cuda": false,
+      "amd_rocm": true,
+      "apple_metal": false,
+      "vulkan": false,
+      "cpu_only": false
+    },
+    "details": {
+      "amd_rocm": "available"
+    }
+  },
+  "docker": {
+    "docker": false,
+    "compose": false
+  },
+  "recommendation": {
+    "recommended_paths": [
+      "01-llama-cpp-quickstart",
+      "02-llama-cpp-server",
+      "03-milestone-integration",
+      "BONUS-llama-cpp-optimization"
+    ],
+    "recommended_model": "Qwen3.5-0.8B (Q4_K_M)",
+    "llama_cpp_backend": "ROCm/HIP",
+    "llama_cpp_cmake_flag": "-DGGML_HIPBLAS=on"
+  }
+}

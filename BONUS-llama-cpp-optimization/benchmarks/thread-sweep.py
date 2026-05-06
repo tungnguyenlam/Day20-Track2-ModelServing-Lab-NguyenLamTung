@@ -21,8 +21,8 @@ from pathlib import Path
 LLAMA_BENCH = Path("BONUS-llama-cpp-optimization/llama.cpp/build/bin/llama-bench")
 LLAMA_BENCH_EXE = LLAMA_BENCH.with_suffix(".exe")
 
-# llama-bench prints a markdown-ish table; this regex grabs the tg128 (decode) row.
-TG_RE = re.compile(r"\|\s*tg128\s*\|\s*([0-9.]+)\s*±")
+# llama-bench prints a markdown-ish table; this regex grabs the tg* (decode) row.
+TG_RE = re.compile(r"\|\s*tg[0-9]+\s*\|\s*([0-9.]+)\s*±")
 
 
 def find_bench() -> Path:

@@ -26,6 +26,11 @@ TIERS: dict[str, tuple[str, str, str]] = {
         "tinyllama-1.1b-chat-v1.0.Q4_K_M.gguf",
         "tinyllama-1.1b-chat-v1.0.Q2_K.gguf",
     ),
+    "Qwen3.5-0.8B": (
+        "unsloth/Qwen3.5-0.8B-GGUF",
+        "Qwen3.5-0.8B-Q4_K_M.gguf",
+        "Qwen3.5-0.8B-Q4_K_M.gguf",
+    ),
     "Qwen2.5-1.5B-Instruct": (
         "Qwen/Qwen2.5-1.5B-Instruct-GGUF",
         "qwen2.5-1.5b-instruct-q4_k_m.gguf",

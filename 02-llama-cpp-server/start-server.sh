@@ -5,8 +5,13 @@ set -euo pipefail
 
 cd "$(dirname "$0")/.."
 
-MODEL=$(python -c 'import json; print(json.load(open("models/active.json"))["primary_model"])')
-THREADS=$(python -c 'import json; hw=json.load(open("hardware.json")); print(hw["cpu"].get("cores_physical") or 4)')
+PY="${PY:-.venv/bin/python}"
+if [ ! -x "$PY" ]; then
+    PY="python"
+fi
+
+MODEL=$($PY -c 'import json; print(json.load(open("models/active.json"))["primary_model"])')
+THREADS=$($PY -c 'import json; hw=json.load(open("hardware.json")); print(hw["cpu"].get("cores_physical") or 4)')
 GPU_LAYERS="${LAB_N_GPU_LAYERS:-99}"
 PARALLEL="${LAB_PARALLEL:-4}"
 CTX="${LAB_N_CTX:-2048}"
@@ -20,7 +25,7 @@ echo "    ctx       : $CTX"
 echo "    listening : http://0.0.0.0:8080"
 echo
 
-exec python -m llama_cpp.server \
+exec "$PY" -m llama_cpp.server \
     --model "$MODEL" \
     --host 0.0.0.0 --port 8080 \
     --n_threads "$THREADS" \
